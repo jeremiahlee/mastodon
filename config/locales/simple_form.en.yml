@@ -11,6 +11,7 @@ en:
         note: 'You can @mention other people or #hashtags.'
         show_collections: People will be able to browse through your follows and followers. People that you follow will see that you follow them regardless.
         unlocked: People will be able to follow you without requesting approval. Uncheck if you want to review follow requests and choose whether to accept or reject new followers.
+        webmonetization_url: 'Example: https://wallet.example.com/claire'
       account_alias:
         acct: Specify the username@domain of the account you want to move from
       account_migration:
@@ -170,6 +171,7 @@ en:
         indexable: Include public posts in search results
         show_collections: Show follows and followers on profile
         unlocked: Automatically accept new followers
+        webmonetization_url: Wallet address
       account_alias:
         acct: Handle of the old account
       account_migration:

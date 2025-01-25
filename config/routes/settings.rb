@@ -62,6 +62,7 @@ namespace :settings do
   resource :migration, only: [:show, :create]
   resource :verification, only: [:show, :update]
   resource :privacy, only: [:show, :update], controller: 'privacy'
+  resource :monetization, only: [:show, :update], controller: 'monetization'
 
   namespace :migration do
     resource :redirect, only: [:new, :create, :destroy]

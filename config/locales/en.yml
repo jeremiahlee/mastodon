@@ -1607,6 +1607,9 @@ en:
       redirect: Your current account's profile will be updated with a redirect notice and be excluded from searches
   moderation:
     title: Moderation
+  monetization:
+    hint_html: '<strong>Receive tips from people who enjoy your posts.</strong> Enter your wallet address to receive payments from people with <a href="https://webmonetization.org/">Web Monetization</a>-enabled apps.'
+    title: Tip jar
   move_handler:
     carry_blocks_over_text: This user moved from %{acct}, which you had blocked.
     carry_mutes_over_text: This user moved from %{acct}, which you had muted.
