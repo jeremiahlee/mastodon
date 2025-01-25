@@ -1,0 +1,16 @@
+- content_for :page_title do
+  = t('monetization.title')
+
+- content_for :heading do
+  %h2= t('settings.profile')
+  = render partial: 'settings/shared/profile_navigation'
+
+= simple_form_for @account, url: settings_monetization_path do |f|
+  = render 'shared/error_messages', object: @account
+
+  %p.lead= t('monetization.hint_html')
+
+  = f.input :webmonetization_url, wrapper: :with_block_label, input_html: { data: { default: @account.webmonetization_url } }
+
+  .actions
+    = f.button :button, t('generic.save_changes'), type: :submit
