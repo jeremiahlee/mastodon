@@ -51,6 +51,7 @@
 #  requested_review_at           :datetime
 #  indexable                     :boolean          default(FALSE), not null
 #  attribution_domains           :string           default([]), is an Array
+#  webmonetization_url           :string
 #
 
 class Account < ApplicationRecord
@@ -105,6 +106,8 @@ class Account < ApplicationRecord
 
   validates :username, presence: true
   validates_with UniqueUsernameValidator, if: -> { will_save_change_to_username? }
+
+  validates :webmonetization_url, url: { schemes: ['https'] }, allow_blank: true
 
   # Remote user validations, also applies to internal actors
   validates :username, format: { with: USERNAME_ONLY_RE }, if: -> { (remote? || actor_type_application?) && will_save_change_to_username? }

@@ -27,6 +27,7 @@
 #  edited_at                    :datetime
 #  trendable                    :boolean
 #  ordered_media_attachment_ids :bigint(8)        is an Array
+#  webmonetization_url          :string
 #
 
 class Status < ApplicationRecord
@@ -97,6 +98,7 @@ class Status < ApplicationRecord
   validates_with StatusLengthValidator
   validates_with DisallowedHashtagsValidator
   validates :reblog, uniqueness: { scope: :account }, if: :reblog?
+  validates :webmonetization_url, url: { schemes: ['https'] }, allow_blank: true
 
   accepts_nested_attributes_for :poll
 
