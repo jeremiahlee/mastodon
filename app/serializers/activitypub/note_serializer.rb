@@ -3,6 +3,8 @@
 class ActivityPub::NoteSerializer < ActivityPub::Serializer
   include FormattingHelper
 
+  context :webmonetization
+
   context_extensions :atom_uri, :conversation, :sensitive, :voters_count
 
   attributes :id, :type, :summary,
@@ -29,6 +31,8 @@ class ActivityPub::NoteSerializer < ActivityPub::Serializer
   attribute :closed, if: :poll_and_expired?
 
   attribute :voters_count, if: :poll_and_voters_count?
+
+  attribute :monetization, if: -> { object.webmonetization_url.present? }
 
   def id
     ActivityPub::TagManager.instance.uri_for(object)
@@ -192,6 +196,10 @@ class ActivityPub::NoteSerializer < ActivityPub::Serializer
 
   def poll_and_voters_count?
     object.preloadable_poll&.voters_count
+  end
+
+  def monetization
+    object.webmonetization_url
   end
 
   class MediaAttachmentSerializer < ActivityPub::Serializer

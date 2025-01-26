@@ -5,6 +5,7 @@ class ActivityPub::ActorSerializer < ActivityPub::Serializer
   include FormattingHelper
 
   context :security
+  context :webmonetization
 
   context_extensions :manually_approves_followers, :featured, :also_known_as,
                      :moved_to, :property_value, :discoverable, :suspended,
@@ -21,6 +22,7 @@ class ActivityPub::ActorSerializer < ActivityPub::Serializer
   has_many :virtual_tags, key: :tag
   has_many :virtual_attachments, key: :attachment
 
+  attribute :monetization, if: -> { object.webmonetization_url.present? }
   attribute :moved_to, if: :moved?
   attribute :also_known_as, if: :also_known_as?
   attribute :suspended, if: :suspended?
@@ -161,6 +163,10 @@ class ActivityPub::ActorSerializer < ActivityPub::Serializer
 
   def published
     object.created_at.midnight.iso8601
+  end
+
+  def monetization
+    object.webmonetization_url
   end
 
   class CustomEmojiSerializer < ActivityPub::EmojiSerializer
