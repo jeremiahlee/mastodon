@@ -113,6 +113,8 @@ export interface ApiStatusJSON {
   media_attachments: ApiMediaAttachmentJSON[];
   mentions: ApiMentionJSON[];
 
+  monetization?: string;
+
   tags: ApiTagJSON[];
   emojis: ApiCustomEmojiJSON[];
 

@@ -77,6 +77,7 @@ export const accountDefaultValues: AccountShape = {
   id: '',
   last_status_at: '',
   locked: false,
+  monetization: '',
   noindex: false,
   note: '',
   note_emojified: '',

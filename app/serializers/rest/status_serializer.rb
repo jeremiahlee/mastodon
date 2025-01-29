@@ -20,6 +20,8 @@ class REST::StatusSerializer < ActiveModel::Serializer
   attribute :content, unless: :source_requested?
   attribute :text, if: :source_requested?
 
+  attribute :monetization, if: -> { object.webmonetization_url.present? }
+
   belongs_to :reblog, serializer: REST::StatusSerializer
   belongs_to :application, if: :show_application?
   belongs_to :account, serializer: REST::AccountSerializer
@@ -81,6 +83,10 @@ class REST::StatusSerializer < ActiveModel::Serializer
 
   def url
     ActivityPub::TagManager.instance.url_for(object)
+  end
+
+  def monetization
+    object.webmonetization_url
   end
 
   def reblogs_count

@@ -20,6 +20,8 @@ class REST::AccountSerializer < ActiveModel::Serializer
 
   attribute :memorial, if: :memorial?
 
+  attribute :monetization, if: -> { object.webmonetization_url.present? }
+
   class AccountDecorator < SimpleDelegator
     def self.model_name
       Account.model_name
@@ -138,6 +140,10 @@ class REST::AccountSerializer < ActiveModel::Serializer
 
   def memorial
     object.memorial?
+  end
+
+  def monetization
+    object.webmonetization_url
   end
 
   def roles
