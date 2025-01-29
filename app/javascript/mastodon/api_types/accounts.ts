@@ -32,6 +32,7 @@ export interface BaseApiAccountJSON {
   id: string;
   last_status_at: string;
   locked: boolean;
+  monetization?: string;
   noindex?: boolean;
   note: string;
   roles?: ApiAccountJSON[];
