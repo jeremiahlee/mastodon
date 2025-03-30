@@ -40,6 +40,7 @@ class Form::AdminSettings
     app_icon
     favicon
     min_age
+    webmonetization_url
   ).freeze
 
   INTEGER_KEYS = %i(
@@ -94,6 +95,7 @@ class Form::AdminSettings
   validates :site_short_description, length: { maximum: DESCRIPTION_LIMIT }, if: -> { defined?(@site_short_description) }
   validates :status_page_url, url: true, allow_blank: true
   validate :validate_site_uploads
+  validates :webmonetization_url, url: { schemes: ['https'] }, allow_blank: true
 
   KEYS.each do |key|
     define_method(key) do

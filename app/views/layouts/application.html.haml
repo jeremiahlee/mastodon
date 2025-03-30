@@ -36,6 +36,9 @@
 
     = custom_stylesheet
 
+    - if Setting.webmonetization_url.present?
+      %link{ rel: 'monetization', href: Setting.webmonetization_url }/
+
     = yield :header_tags
 
   %body{ class: body_classes }

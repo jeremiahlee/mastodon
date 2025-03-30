@@ -841,6 +841,8 @@ en:
         authorized_fetch_overridden_hint: You are currently unable to change this setting because it is overridden by an environment variable.
         federation_authentication: Federation authentication enforcement
       title: Server settings
+      monetization:
+        preamble_html: '<strong>Receive tips from people who use this server.</strong> Enter your wallet address to receive payments from people with <a href="https://webmonetization.org/">Web Monetization</a>-enabled apps.'
     site_uploads:
       delete: Delete uploaded file
       destroyed_msg: Site upload successfully deleted!
