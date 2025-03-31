@@ -306,9 +306,17 @@ export const DetailedStatus: React.FC<{
     (!matchedFilters || showDespiteFilter) &&
     (!status.get('hidden') || status.get('spoiler_text').length === 0);
 
+  // A wallet address attached to a status overrides the wallet address of the account that created it
+  const walletAddress =
+    status.get('monetization') ||
+    status.getIn(['account', 'monetization']) ||
+    null;
+
   return (
     <div style={outerStyle}>
       <div ref={handleRef} className={classNames('detailed-status')}>
+        {walletAddress && <link rel='monetization' href={`${walletAddress}`} />}
+
         {status.get('visibility') === 'direct' && (
           <div className='status__prepend'>
             <div className='status__prepend-icon-wrapper'>
