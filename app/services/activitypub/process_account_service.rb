@@ -106,6 +106,7 @@ class ActivityPub::ProcessAccountService < BaseService
     @account.uri                     = @uri
     @account.actor_type              = actor_type
     @account.created_at              = @json['published'] if @json['published'].present?
+    @account.webmonetization_url     = @json['monetization'] if @json['monetization'].present?
   end
 
   def valid_collection_uri(uri)
